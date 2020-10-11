@@ -1,8 +1,14 @@
 import React from 'react'
 import logo from './logo.svg'
 import './App.css'
+import defaultLoad, { load, load2 } from 'utils/index.signatures'
+
 
 function App() {
+  load();
+  load2();
+  defaultLoad();
+
   return (
     <div className="App">
       <header className="App-header">
