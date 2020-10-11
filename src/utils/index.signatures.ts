@@ -31,4 +31,51 @@ export default () => {
     console.log(`message1 : ${foo['a'].message1}`);
     console.log(`message2 : ${foo['a']['message2']}`);
     console.log(`0 : ${foo['a'][0]}`);
+
+
+    // @see https://typescript-jp.gitbook.io/deep-dive/type-system/index-signatures#stringtonumberindekusanowotsu
+    // stringとnumberインデクサの両方を持つ
+    interface StringOrNumber {
+        [key: string]: string | number; // Must accommodate all members
+    }
+    const stringOrNumber: StringOrNumber = {}
+    stringOrNumber['a'] = "aaaa"
+    stringOrNumber['b'] = 100
+    console.log(`stringOrNumber['a'] : ${stringOrNumber['a']}`);
+    console.log(`stringOrNumber['b'] : ${stringOrNumber['b']}`);
+
+    // @see https://typescript-jp.gitbook.io/deep-dive/type-system/index-signatures#dezainpatnnesutosaretaindekkusushigunecha
+    // インデックスシグネチャで指定された構造体を再帰的にネストして使用してみた例
+    interface NestedCSS {
+        color?: string;
+        nest?: {
+          [selector: string]: NestedCSS;
+        }
+      }
+      const example: NestedCSS = {
+        color: 'red',
+        nest: {
+          '.subclass': {
+            color: 'blue',
+            nest: {
+                '.subclass2': {
+                    color: 'blue'
+                }
+            }
+          }
+        }
+      }
+
+      const failsSilently: NestedCSS = {
+        color: 'red', // TS Error: unknown property `colour`
+      }
+
+      const failsSilently2: NestedCSS = {
+        nest: {
+            '.subclass': {
+              color: 'blue'
+            }
+          }
+      }
+
 }
