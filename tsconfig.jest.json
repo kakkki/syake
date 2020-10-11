@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "noEmit": true,
+      "target": "esnext"
+    },
+    "files": [
+      "**/*.test.ts",
+      "**/*.test.tsx"
+    ]
+  }
+  
