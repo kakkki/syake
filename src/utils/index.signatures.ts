@@ -65,17 +65,21 @@ export default () => {
           }
         }
       }
+      console.log(`example.color : ${example.color}`);
 
-      const failsSilently: NestedCSS = {
-        color: 'red', // TS Error: unknown property `colour`
-      }
+    //   const colorOnly: NestedCSS = {
+    //     color: 'red', // TS Error: unknown property `colour`
+    //   }
 
-      const failsSilently2: NestedCSS = {
-        nest: {
-            '.subclass': {
-              color: 'blue'
-            }
-          }
-      }
+    //   const nestOnly: NestedCSS = {
+    //     nest: {
+    //         '.subclass': {
+    //           color: 'blue'
+    //         }
+    //       }
+    //   }
+
+    //   console.log(`colorOnly.color : ${colorOnly.color}`)
+    //   console.log(`colorOnly.color : ${nestOnly.nest?.subclass.color}`)
 
 }
